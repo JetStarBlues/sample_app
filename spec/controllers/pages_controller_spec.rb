@@ -4,6 +4,12 @@ describe PagesController do
   # Lesson 19 @4:00. Added as something to do with deleted files
   render_views
 
+  # Lesson 26 @18:00 ...Defining a local variable
+  # Seems redundant to me....
+  before(:each) do
+    @base_title = "RoR Sample App"
+  end
+
   describe "GET 'home'" do
     it "returns http success" do
       get 'home'
@@ -14,7 +20,9 @@ describe PagesController do
     it "should have the correct title" do
       get 'home'
       response.should have_selector("title",
-      :content => "Ruby on Rails Tutorial Sample App | Home")
+      #:content => "RoR Sample App | Home")
+      #see lesson 26 @18:00
+      :content => "#{@base_title} | Home")
     end
 
     # Lesson 19 @16:00
