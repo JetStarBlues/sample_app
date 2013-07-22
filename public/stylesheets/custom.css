@@ -59,3 +59,17 @@ a.signup_button
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 }
+
+footer
+{
+	margin-top:40px;
+	float: left;
+	width: 140px;
+	height:20px;
+	/* if want to center .... margin-left: auto; margin-right: auto; */
+}
+
+footer nav
+{
+	text-align:left;
+}
