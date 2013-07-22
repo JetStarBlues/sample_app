@@ -41,7 +41,7 @@ describe PagesController do
       response.should be_success
     end
     it "should have the correct title" do
-      get 'home'
+      get 'contact'
       response.should have_selector("title",
       :content => "RoR Sample App | Contact")
     end
@@ -55,7 +55,7 @@ describe PagesController do
       response.should be_success
     end
     it "should have the correct title" do
-      get 'home'
+      get 'about'
       response.should have_selector("title",
       :content => "RoR Sample App | About")
     end   
@@ -69,7 +69,7 @@ describe PagesController do
       response.should be_success
     end
     it "should have the correct title" do
-      get 'home'
+      get 'help'
       response.should have_selector("title",
       :content => "RoR Sample App | Help")
     end   
