@@ -5,8 +5,27 @@ gem 'rails', '3.0.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :development, :test do gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3' end
-group :production do gem 'pg' end
+group :development, :test do 
+	gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3' 
+	gem 'rspec-rails', '2.4.0'
+    #gem 'rspec-rails', '2.11.0'
+end
+
+group :test do
+	gem 'nokogiri', '1.3.3'
+	gem 'webrat', '0.5.3'
+	# to get autotest working...
+	gem 'autotest', '4.4.6'
+	#gem 'webrat', '0.7.3'
+	#gem 'selenium-webdriver', '2.0.0'
+	#gem 'capybara', '2.1.0'
+end
+
+group :production do 
+	gem 'pg' 
+end
+
+
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -27,12 +46,3 @@ group :production do gem 'pg' end
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 
-group :development do
-   #gem 'rspec-rails', '2.0.0.beta.18'
-   gem 'rspec-rails', '2.11.0'
- end
-
-group :test do
-   #gem 'rspec-rails', '2.0.0.beta.18'
-   gem 'rspec-rails', '2.11.0'
- end

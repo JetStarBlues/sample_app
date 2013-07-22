@@ -6,9 +6,9 @@ describe PagesController do
 
   # Lesson 26 @18:00 ...Defining a local variable
   # Seems redundant to me....
-  before(:each) do
-    @base_title = "RoR Sample App"
-  end
+  #before(:each) do
+  #  @base_title = "RoR Sample App"
+  #end
 
   describe "GET 'home'" do
     it "returns http success" do
@@ -20,9 +20,9 @@ describe PagesController do
     it "should have the correct title" do
       get 'home'
       response.should have_selector("title",
-      #:content => "RoR Sample App | Home")
+      :content => "RoR Sample App | Home")
       #see lesson 26 @18:00
-      :content => "#{@base_title} | Home")
+     # :content => "#{@base_title} | Home")
     end
 
     # Lesson 19 @16:00
