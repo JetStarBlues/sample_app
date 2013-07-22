@@ -1,0 +1,61 @@
+.container
+{
+	padding-top: 20px;
+	float:left;
+}
+
+body
+{
+	background-color:#FFF;
+	padding-top: 20px;
+	padding-left: 20px;
+}
+
+header
+{}
+
+section
+{}
+
+a { text-decoration: none; }
+
+a:hover 
+{ text-decoration: underline; }
+
+a:visited
+{}
+
+nav
+{
+	float: right;
+	white-space: nowrap;
+}
+
+nav ul 
+{}
+
+nav ul li
+{
+	list-style-type: : none;
+	display: inline;
+	padding-right: 5px;
+}
+
+a.signup_button
+{
+	display: block;
+	text-align: center;
+	background: #FF8C00;
+	font-weight: bold;
+	width: 90px;
+	color:black;
+	padding: 2px;
+	margin-left: 4px;
+}
+
+.round
+{
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
