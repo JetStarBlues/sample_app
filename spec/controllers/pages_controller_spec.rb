@@ -22,7 +22,7 @@ describe PagesController do
       response.should have_selector("title",
       :content => "RoR Sample App | Home")
       #see lesson 26 @18:00
-     # :content => "#{@base_title} | Home")
+      # :content => "#{@base_title} | Home")
     end
 
     # Lesson 19 @16:00
@@ -32,22 +32,47 @@ describe PagesController do
       response.body.should_not =~ /<body>\s*<\/body>/
     end
   end
+  
 
-
+  # Contact page
   describe "GET 'contact'" do
     it "returns http success" do
       get 'contact'
       response.should be_success
     end
+    it "should have the correct title" do
+      get 'home'
+      response.should have_selector("title",
+      :content => "RoR Sample App | Contact")
+    end
   end
 
 
-  # Manual added as page manually created
+  # About page
    describe "GET 'about'" do
     it "returns http success" do
       get 'about'
       response.should be_success
     end
+    it "should have the correct title" do
+      get 'home'
+      response.should have_selector("title",
+      :content => "RoR Sample App | About")
+    end   
+  end
+
+
+  # Help page
+   describe "GET 'help'" do
+    it "returns http success" do
+      get 'help'
+      response.should be_success
+    end
+    it "should have the correct title" do
+      get 'home'
+      response.should have_selector("title",
+      :content => "RoR Sample App | Help")
+    end   
   end
 
 end
