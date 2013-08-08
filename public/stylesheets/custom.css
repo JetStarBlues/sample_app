@@ -62,7 +62,8 @@ a.signup_button
 
 footer
 {
-	margin-top:40px;
+	margin-top:180px;  /* 40px without gif */
+	position: fixed;
 	float: left;
 	width: 140px;
 	height:20px;
