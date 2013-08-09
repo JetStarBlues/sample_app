@@ -16,6 +16,7 @@ group :test do
 	gem 'webrat', '0.5.3'
 	# to get autotest working...
 	gem 'autotest', '4.4.6'
+	gem 'factory_girl_rails','1.0'
 	#gem 'webrat', '0.7.3'
 	#gem 'selenium-webdriver', '2.0.0'
 	#gem 'capybara', '2.1.0'
