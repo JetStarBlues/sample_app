@@ -41,11 +41,8 @@ describe UsersController do
       response.should have_selector('div>a', :content => user_path(@user),
                                              :href    => user_path(@user))
     end
-
   end
  
-
-
 
   describe "GET 'new'" do
 
@@ -58,8 +55,7 @@ describe UsersController do
       get :new
       response.should have_selector("title", :content => "RoR Sample App | Sign Up")
     end 
-
-
   end
+
 
 end

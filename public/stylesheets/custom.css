@@ -85,6 +85,13 @@ footer nav
 	font-size:2.75em;line-height:1;margin-bottom:0.5em;	
 	white-space: nowrap;
 }
+
+#register
+{
+	margin-left: 10px;
+	margin-bottom: 15px;
+}
+
 .gravatar
 {
 	border: 1px solid #000;
