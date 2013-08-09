@@ -78,7 +78,6 @@ describe User do
     it "should have a password confirmation attribute" do
       @user.should respond_to(:password_confirmation)
     end
-
   end
 
   describe "password validations" do
@@ -104,7 +103,6 @@ describe User do
       User.new(@var.merge(:password => long, :password_confirmation => long)).
       should_not be_valid
     end
-
   end
 
   describe "password encryption" do
@@ -117,7 +115,48 @@ describe User do
       @user.should respond_to(:encrypted_password)
     end
 
+    it "should set the encrypted password attribute" do
+      @user.encrypted_password.should_not be_blank
+    end
 
+    it "should have a salt" do
+      @user.should respond_to(:salt)
+    end
+
+    describe "has_password? method" do
+
+      it "should exist" do
+        @user.should respond_to(:has_password?)
+      end
+
+      it "should return true if the passords match" do
+        @user.has_password?(@var[:password]).should be_true
+      end
+
+      it "should return false if the passords don't match" do
+        @user.has_password?("invalid").should be_false
+      end
+    end
+
+    describe "authenticate method" do
+
+      it "should exist" do
+        #class level method...
+        User.should respond_to(:authenticate)
+      end
+
+      it "should return nil on email/password mismatch" do
+        User.authenticate(@var[:email], "wrongPassword").should be_nil
+      end
+
+      it "should return nil for an email with no user" do
+        User.authenticate("ace@casino.com", @var[:password]).should be_nil
+      end
+
+      it "should return the user on email/password match" do
+        User.authenticate(@var[:email], @var[:password]). should == @user
+      end
+    end
   end
-
+  
 end
