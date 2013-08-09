@@ -9,6 +9,7 @@ group :development, :test do
 	gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3' 
 	gem 'rspec-rails', '2.4.0'
     #gem 'rspec-rails', '2.11.0'
+    gem 'gravatar_image_tag','0.1.0'
 end
 
 group :test do
