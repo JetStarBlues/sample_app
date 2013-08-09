@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
-	attr_accessible :name, :email
+
+	attr_accessor	:password
+
+	#attributes that are accessible through the website
+	attr_accessible :name, :email, :password, :password_confirmation
 
     #check if name & email present
     	#Lesson 36
@@ -11,5 +15,9 @@ class User < ActiveRecord::Base
 	    				  :format      => { :with => email_regex },
 	    				  #:uniqueness => true
 	    				  :uniqueness  => { :case_sensitive => false } 
+	#password
+		validates :password, :presence     => true,
+							 :confirmation => true,
+							 :length	   => { :within => 6..40 }
 
 end

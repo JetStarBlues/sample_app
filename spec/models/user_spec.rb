@@ -3,10 +3,15 @@ require 'spec_helper'
 describe User do
 
   before(:each) do
-  	@var = {:name => "exampleUser", :email => "user@example.com"}
+  	@var = {
+      :name => "exampleUser", 
+      :email => "user@example.com",
+      :password => "superSecret",
+      :password_confirmation => "superSecret"
+    }
   end
 
-  #Lesson 36 @7:00
+#Lesson 36 @7:00
   it "should create a new instance given a valid attribute" do
   	User.create!(@var)
   end
@@ -56,6 +61,63 @@ describe User do
   	User.create!(@var.merge(:email => upperCaseEmail))
   	userWithDuplicateEmail = User.new(@var)
   	userWithDuplicateEmail.should_not be_valid
+  end
+
+#Lesson 40
+  describe "passwords" do
+
+    before(:each) do
+      #further simplification
+      @user = User.new(@var)
+    end
+
+    it "should have a password attribute" do
+      @user.should respond_to(:password)
+    end
+
+    it "should have a password confirmation attribute" do
+      @user.should respond_to(:password_confirmation)
+    end
+
+  end
+
+  describe "password validations" do
+
+    it "should require a password" do
+      User.new(@var.merge(:password => "", :password_confirmation => "")).
+      should_not be_valid
+    end
+
+    it "should require a matching password confirmation" do
+      User.new(@var.merge(:password_confirmation => "invalid")).
+      should_not be_valid
+    end
+
+    it "should reject short passwords" do
+      short = "a" * 5
+      User.new(@var.merge(:password => short, :password_confirmation => short)).
+      should_not be_valid
+    end
+
+    it "should reject long passwords" do
+      long = "a" * 41
+      User.new(@var.merge(:password => long, :password_confirmation => long)).
+      should_not be_valid
+    end
+
+  end
+
+  describe "password encryption" do
+    
+    before(:each) do
+      @user = User.create!(@var)
+    end
+
+    it "should have an encrypted password attribute" do
+      @user.should respond_to(:encrypted_password)
+    end
+
+
   end
 
 end
