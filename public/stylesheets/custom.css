@@ -1,4 +1,4 @@
-.container
+.watermark
 {
 	padding-top: 20px;
 	float:left;
@@ -63,7 +63,7 @@ a.signup_button
 footer
 {
 	margin-top:180px;  /* 40px without gif */
-	position: fixed;
+	position: absolute;
 	float: left;
 	width: 140px;
 	height:20px;
@@ -78,4 +78,31 @@ footer nav
 #indent
 {
 	margin-left: 15px;
+}
+
+#UserProfileHeader
+{
+	font-size:2.75em;line-height:1;margin-bottom:0.5em;	
+	white-space: nowrap;
+}
+.gravatar
+{
+	border: 1px solid #000;
+	margin-bottom: -10px;
+}
+
+.debug 
+{
+margin-top:250px;  /* gif + footer */
+position: relative;
+}
+
+.sidebar {
+float: right;
+/*width: 175px;	*/
+height: 100px;  /* arbitrary */
+margin-right: 15px;
+padding-left: 10px;
+padding-top: 15px;
+/*background-color:#BEBEBE;    for testing*/ 
 }

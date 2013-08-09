@@ -1,6 +1,18 @@
 <!--manually created page, Lesson 37 @ 4:30 -->
 
-<h2>
-<%= gravatar_for @user %>
+<h1 id ="UserProfileHeader">
+<%= gravatar_for @user %>   <!--how to setup so that users upload own images?-->
 <%= @user.name %>
-</h2>
+</h1>
+
+
+<!--once done sidebar add the tests for link @ 31:00 -->
+<div class="sidebar round">
+<strong>Name</strong> <%= @user.name %> <br>
+<strong>URL</strong> <%= link_to "/users/#{@user.id}" %> <br>
+<!-- < link_to "content", path >  ...if content omitted, assumed -->
+<!-- <strong>Link2</strong> <%= link_to user_path(@user), @user %> -->
+</div>
+
+<br>
+<p>Welcome to my profile page!</p>
