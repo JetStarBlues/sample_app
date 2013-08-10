@@ -1,7 +1,17 @@
+<!--manually created page, Lesson 37 @ 4:30 -->
 
 <h1 id ="UserProfileHeader">
 <!--how to setup so that users upload own images?-->
 <%= @user.name %>
 </h1>
 
+
+<!--once done sidebar add the tests for link @ 31:00 -->
+<div class="sidebar round">
+<strong>Name</strong> <%= @user.name %> <br>
+<strong>Link</strong> <%= link_to user_path(@user), @user %>
+<!-- < link_to "content", path >  ...if content omitted, assumed -->
+</div>
+
+<br>
 <p>Welcome to my profile page!</p>
