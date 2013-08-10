@@ -4,7 +4,7 @@ describe UsersController do
   render_views
 
   describe "GET 'show'" do
-  #lesson 42
+#Lesson 42 (User Profile Page)
     before(:each) do
       @user = Factory(:user)
     end
@@ -57,5 +57,59 @@ describe UsersController do
     end 
   end
 
+#Lesson 46 (SignUp page)
+  describe "POST 'create'" do
 
+    describe "failure" do
+
+      before(:each) do
+        @var = { :name => "", :email => "", :password => "", :password_confirmation => "" }
+      end
+
+      it "should have the right title" do
+        post :create, :user => @var
+        response.should have_selector("title", :content => "RoR Sample App | Sign Up")
+      end
+
+      it "should render the 'new' page" do
+        post :create, :user => @var
+        response.should render_template('new')
+      end
+
+      it "should not create a user" do
+        lambda do
+          post :create, :user => @var
+        end.should_not change(User, :count)
+      end
+    end
+
+    describe "success" do
+        
+      before(:each) do
+        @var = { :name => "exampleUser", :email => "user@example.com", :password => "superSecret", :password_confirmation => "superSecret" }
+      end
+      
+      it "should create a user" do
+        lambda do
+          post :create, :user => @var
+        end.should change(User, :count).by(1)
+      end
+
+      it "should redirect to the user show page" do
+        post :create, :user => @var
+        response.should redirect_to(user_path(assigns(:user)))
+      end
+
+      it "should have a welcome message" do
+        post :create, :user => @var
+        #change it up to flash user's name
+        flash[:success].should =~ /Welcome #{@var[:name]} - A great journey begins!/     
+        #flash[:success].should =~ /welcome USER, a great journey begins!/i    ...the i makes it case-insensitive
+      end
+     
+    end
+
+
+
+  end  
 end

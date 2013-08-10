@@ -15,7 +15,14 @@
 		</ul>
 	</nav>
 	
-	<section class="round"><%= yield %></section>
+	<section class="round">
+		<!--flash success message on signup, Lesson 46 -->
+		<% flash.each do |key, value| %>
+			<div class ="flash <%= key %>"><%= value %></div>
+		<% end %>
+		<!--insert respective 'body' content for each page-->
+		<%= yield %>
+	</section>
 
 	<div class="watermark">
 			<%= image_tag("watertribe.gif", :alt =>"Unable to display image", :class => "round")%>

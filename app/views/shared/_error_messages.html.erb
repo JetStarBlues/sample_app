@@ -1,0 +1,16 @@
+<% if @user.errors.any? %>
+	<div id="signupError">
+		<h3>
+			<%= pluralize(@user.errors.count, "error") %>
+			<!--prohibited this user from being saved -->
+			are in the way of awesomeness!
+		</h3>
+		<p> <!--There were problems with the following fields: --></p>
+		<ul>
+		<% @user.errors.full_messages.each do |message| %>
+			<li><%= message %></li><% end %>
+		</ul>
+	</div>
+
+
+<% end %>

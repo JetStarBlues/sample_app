@@ -11,19 +11,16 @@ body
 	padding-left: 20px;
 }
 
-header
-{}
+header{}
 
-section
-{}
+section{}
 
 a { text-decoration: none; }
 
 a:hover 
 { text-decoration: underline; }
 
-a:visited
-{}
+a:visited{}
 
 nav
 {
@@ -31,8 +28,7 @@ nav
 	white-space: nowrap;
 }
 
-nav ul 
-{}
+nav ul{}
 
 nav ul li
 {
@@ -112,4 +108,42 @@ margin-right: 15px;
 padding-left: 10px;
 padding-top: 15px;
 /*background-color:#BEBEBE;    for testing*/ 
+}
+
+.field_with_errors{}
+
+#register br
+{
+	display: none;
+}
+
+.field_with_errors label
+{
+	color: #FF8C00;
+}
+
+#signUpBtn2
+{
+	margin-top: 5px;
+}
+
+#signupError li
+{
+	margin-left:15px;
+}
+
+#signupError h3
+{
+	margin-left:10px;
+}
+
+.success
+{
+	background: #e6efc2;
+	color: #264409;
+	font-weight: bold;
+	border-color: #c6d880;
+	margin-top:20px;
+	margin-right: 15px;
+
 }

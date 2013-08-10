@@ -11,4 +11,19 @@ class UsersController < ApplicationController
   	@title = "Sign Up"
   end
 
+  def create
+  	@user = User.new(params[:user])
+    if @user.save
+      #handle a succesful save
+      #flash[:success] = "Welcome USER, a great journey begins!"
+      flash[:success] = "Welcome #{@user.name} - A great journey begins!"
+      redirect_to @user #, :flash => { :success => "Welcome USER, a great journey begins!" }
+      # same as, redirect_to user_path(@user)
+    else
+      @title = "Sign Up"
+  	  render 'new'
+      #page will include info about errors
+    end
+  end
+
 end
