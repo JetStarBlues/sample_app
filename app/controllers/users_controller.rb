@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       #flash[:success] = "Welcome USER, a great journey begins!"
       flash[:success] = "Welcome #{@user.name} - A great journey begins!"
       #redirect_to @user
-      redirect_to user_path(@user)
+      redirect_to user_path(@user.id) #JK to fix heroku
       # same as, redirect_to user_path(@user)
       #redirect_to @user, :flash => { :success => "Welcome USER, a great journey begins!" }
     else
