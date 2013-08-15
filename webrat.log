@@ -38,3 +38,8 @@ REQUESTING PAGE: POST /users with {"utf8"=>"✓", "user[name]"=>"", "user[email]
 REQUESTING PAGE: GET /signup with {} and HTTP headers {}
 REQUESTING PAGE: POST /users with {"utf8"=>"✓", "user[name]"=>"exampleUser", "user[email]"=>"user@example.com", "user[password]"=>"superSecret", "user[password_confirmation]"=>"superSecret", "commit"=>"Sign Up"} and HTTP headers {"HTTP_REFERER"=>"/signup"}
 REQUESTING PAGE: GET http://www.example.com/users/1 with {} and HTTP headers {"HTTP_REFERER"=>"/users"}
+REQUESTING PAGE: GET / with {} and HTTP headers {}
+REQUESTING PAGE: GET /contact with {} and HTTP headers {"HTTP_REFERER"=>"/"}
+REQUESTING PAGE: GET /about with {} and HTTP headers {"HTTP_REFERER"=>"/contact"}
+REQUESTING PAGE: GET /help with {} and HTTP headers {"HTTP_REFERER"=>"/about"}
+REQUESTING PAGE: GET /home with {} and HTTP headers {"HTTP_REFERER"=>"/help"}
