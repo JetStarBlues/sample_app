@@ -153,3 +153,12 @@ padding-top: 15px;
 	margin-right: 15px;
 
 }
+
+.error
+{
+	background:#fbe3e4;
+	color:#8a1f11;
+	border-color:#fbc2c4;
+	margin-top:20px;
+	margin-right: 15px;
+}

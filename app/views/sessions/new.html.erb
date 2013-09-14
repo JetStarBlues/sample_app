@@ -4,7 +4,7 @@
 <%= form_for(:sessions, :url => sessions_path) do |f| %> <!--signin_path GET, sessions_path POST, signout_path DESTROY -->
 		<div id="register">
 			<div><%= f.label :email %></div> <div><%= f.text_field :email %></div>
-			<div><%= f.label :pasword %></div> <div><%= f.text_field :password %></div>
+			<div><%= f.label :password %></div> <div><%= f.password_field :password %></div>
 			<div id="Btn2"><%= f.submit "Sign In" %></div>
 		</div>
 <% end %>
