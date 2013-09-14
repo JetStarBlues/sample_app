@@ -71,7 +71,7 @@ describe UsersController do
         response.should have_selector("title", :content => "RoR Sample App | Sign Up")
       end
 
-      it "should render the 'new' page" do
+      it "should re-render the 'new' page" do
         post :create, :user => @var
         response.should render_template('new')
       end
@@ -105,6 +105,12 @@ describe UsersController do
         #change it up to flash user's name
         flash[:success].should =~ /Welcome #{@var[:name]} - A great journey begins!/     
         #flash[:success].should =~ /welcome USER, a great journey begins!/i    ...the i makes it case-insensitive
+      end
+
+      #Lesson 55 @10:00
+      it "should sign the user in" do
+        post :create, :user => @var
+        controller.should be_signed_in
       end
      
     end
