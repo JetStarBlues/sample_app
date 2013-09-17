@@ -1,0 +1,9 @@
+<!--Lesson 59 @9:30 partial-->
+<%= render 'shared/error_messages' %>
+	<div id="register">
+		<div><%= f.label :name %></div> <div><%= f.text_field :name %></div>
+		<div><%= f.label :email %></div> <div><%= f.text_field :email %></div>
+		<div><%= f.label :password %></div> <div><%= f.password_field :password %></div>
+		<div><%= f.label :password_confirmation, "Confirm password" %></div><div><%= f.password_field :password_confirmation %> </div>
+		<div id="Btn2"><%= f.submit "Update" %></div>
+	</div>

@@ -28,4 +28,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit   #Lesson 59
+    @user  = User.find(params[:id])
+    @title = "Settings"
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      # update succesful
+      flash[:success] = "Your changes have been saved!"
+      redirect_to @user #profile page
+    else
+      # update failed
+      @title = "Settings"
+      render 'edit'
+    end
+  end
+
 end
