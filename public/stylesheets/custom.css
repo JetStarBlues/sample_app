@@ -143,24 +143,30 @@ padding-top: 15px;
 	margin-left:10px;
 }
 
+.success, .error, .notice
+{
+	margin-top:20px;
+	margin-right: 15px;
+}
 .success
 {
 	background: #e6efc2;
 	color: #264409;
 	font-weight: bold;
 	border-color: #c6d880;
-	margin-top:20px;
-	margin-right: 15px;
-
 }
-
 .error
 {
 	background:#fbe3e4;
 	color:#8a1f11;
 	border-color:#fbc2c4;
-	margin-top:20px;
-	margin-right: 15px;
+}
+
+.notice 
+{
+	background:#fff6bf;
+	color:#514721;
+	border-color:#ffd324;
 }
 
 #editPic

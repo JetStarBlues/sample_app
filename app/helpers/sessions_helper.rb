@@ -26,7 +26,13 @@ module SessionsHelper
 		#delete cookie
 		cookies.delete(:remember_token)
 		current_user = nil
-	end										 
+	end		
+
+	def deny_access  #Lesson 60 @11:00
+		flash[:notice] = "You gotta sign in to access this page."
+        redirect_to signin_path
+        # redirect_to signin_path, :notice => "You gotta sign in to access this page."
+	end								 
 
 	private
 

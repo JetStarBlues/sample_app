@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :authenticate, :only=> [:edit, :update]   #Lesson 60
   
   def show
   	#@user = User.find(1)
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
     @title = "Settings"
   end
 
-  def update
+  def update 
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       # update succesful
@@ -45,5 +46,17 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+
+  private
+
+    ##Created a generic 'deny_access' instead. See 'sessions_helper.rb'
+    ##Lesson 60 @11:00
+    # def authenticate   
+    #   flash[:notice] = "You gotta sign in to access this page."
+    #   redirect_to signin_path unless signed_in?
+    # end
+    def authenticate
+      deny_access unless signed_in?
+    end
 
 end
