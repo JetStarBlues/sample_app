@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :only=> [:edit, :update]   #Lesson 60
-  
+  before_filter :correct_user, :only=> [:edit, :update]
+
   def show
   	#@user = User.find(1)
   	@user = User.find(params[:id])
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
   end
 
   def edit   #Lesson 59
+    # raise request.inspect <<allows you to what sent in request
     @user  = User.find(params[:id])
     @title = "Settings"
   end
@@ -57,6 +59,15 @@ class UsersController < ApplicationController
     # end
     def authenticate
       deny_access unless signed_in?
+    end
+
+    def correct_user
+      # compare users
+      @user = User.find(params[:id])  
+      #redirect_to(root_path) unless @user == current_user
+      redirect_to(root_path) unless current_user?(@user)   
+          #alternate syntax. Created a method 'current_user?'
+          #see SessionsHelper and Lesson 60 @30:00
     end
 
 end

@@ -18,6 +18,10 @@ module SessionsHelper
 													 #something about make remember even if click new page
 	end	
 
+	def current_user?(user)
+		user == current_user
+	end
+
 	def signed_in?
 		!current_user.nil?
 	end	
@@ -28,11 +32,25 @@ module SessionsHelper
 		current_user = nil
 	end		
 
-	def deny_access  #Lesson 60 @11:00
+	def deny_access  #Lesson 60 @11:00 and @17:00
+		store_location
 		flash[:notice] = "You gotta sign in to access this page."
         redirect_to signin_path
         # redirect_to signin_path, :notice => "You gotta sign in to access this page."
-	end								 
+	end		
+
+	def store_location
+		session[:return_to] = request.fullpath
+	end		
+
+	def redirect_back_or(default)
+		redirect_to(session[:return_to] || default)
+		clear_return_to
+	end		
+
+	def clear_return_to  #So that when signout then signin, redirected to default vs. stored location
+		session[:return_to] = nil
+	end		 
 
 	private
 

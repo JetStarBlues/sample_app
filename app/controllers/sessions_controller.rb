@@ -15,7 +15,9 @@ class SessionsController < ApplicationController
   		#successful signin
       sign_in user
       flash[:success] = "Great to see you again!"
-      redirect_to user
+      #redirect_to user       # Redirect to profile page
+      redirect_back_or user   # Lesson 60 (redirect to pg user was trying to access before sign_in OR to profile)
+
 
     end
   end
