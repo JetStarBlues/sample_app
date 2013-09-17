@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only=> [:edit, :update]   #Lesson 60
+  before_filter :authenticate, :only=> [:edit, :update, :index]   #Lesson 60
   before_filter :correct_user, :only=> [:edit, :update]
 
   def show
@@ -48,6 +48,16 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+
+  def index
+    @users = User.all
+    @title = "Members"
+  end
+
+
+  
+
+
 
   private
 

@@ -1,0 +1,13 @@
+<h1>Members</h1>
+<p>A listing of all fellow journeymen (err... journeypersons) in this incredibly epic quest!</p>
+
+<ul class="members">
+	<% @users.each do |user| %>
+		<li>
+			<span id="indexPic"><%= gravatar_for user, :size => 30 %></span>
+			<span id="indexName">&nbsp;&nbsp;<%= link_to user.name, user %></span>
+		</li>
+	<% end %>
+
+</ul>
+

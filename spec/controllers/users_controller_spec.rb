@@ -4,6 +4,46 @@ describe UsersController do
   render_views
 
   #---
+  describe "GET 'index'" do
+    describe "for non-signed-in users" do
+      it "should deny acces to 'index'" do
+        get :index
+        response.should redirect_to(signin_path)
+        flash[:notice].should =~ /sign in/i
+      end
+    end
+
+    describe "for signed-in users" do
+      before (:each) do
+        @user = test_sign_in(Factory(:user))
+        # see Spec_Helper.rb for 'test_sign_in' method
+        # alternate syntax. See lesson 61 @5:30
+
+        Factory(:user, :email => "anotheruser@example.com")
+        Factory(:user, :email => "anotheruser2@example.com")
+      end
+
+      it "should be successful" do
+        get :index
+        response.should be_success
+      end
+
+      it "should have the right title" do
+        get :index
+        response.should have_selector("title", :content => "Members")
+      end
+
+      it "should have an element for each user" do
+        get :index
+        User.all.each do |user|
+          response.should have_selector("li", :content => user.name)
+        end
+      end
+
+    end
+  end
+
+  #---
   describe "GET 'show'" do
   #Lesson 42 (User Profile Page)
     before(:each) do
@@ -226,7 +266,6 @@ describe UsersController do
         response.should redirect_to(root_path)        
       end
     end
-
   end
 
 end

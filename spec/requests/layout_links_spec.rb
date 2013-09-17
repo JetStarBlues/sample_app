@@ -77,5 +77,11 @@ describe "when signed in" do
 										   :content => "Settings")
 	end
 
+	it "should have a members link" do
+		visit root_path
+		response.should have_selector("a", :href => users_path,
+										   :content => "Members")
+	end
+
 end
 
