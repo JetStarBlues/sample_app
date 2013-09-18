@@ -25,7 +25,21 @@ describe Micropost do
 		end
 	end
 
+	describe "validations" do
+		it "should have a user id" do
+			Micropost.new(@var).should_not be_valid
+		end
 
+		it "should require nonblank content" do
+			@user.microposts.build(:content => "  ").should_not be_valid
+		end
+
+		it "should reject long content" do
+			#150 limit (Twitter is 140)
+			@user.microposts.build(:content => "a" * 151).should_not be_valid
+		end
+
+	end
 
 
 end
