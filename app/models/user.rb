@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
 	#attributes that are accessible through the website
 	attr_accessible :name, :email, :password, :password_confirmation
 
+	#Lesson 66 - associations with other models
+	has_many :microposts, :dependent => :destroy  #when delete user, also delete assoc microposts
+
     #check if name & email present
     	#Lesson 36
     	email_regex = /\A[\w\-.]+@[a-z\d\_]{2,}+\.[a-z]{2,}\z/i
