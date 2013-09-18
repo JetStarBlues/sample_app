@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only=> [:edit, :update, :index]   #Lesson 60
-  before_filter :correct_user, :only=> [:edit, :update]
+  before_filter :authenticate, :only => [:edit, :update, :index, :destroy]   #Lesson 60
+  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :admin_user,   :only => :destroy
 
   def show
   	#@user = User.find(1)
@@ -32,12 +33,12 @@ class UsersController < ApplicationController
 
   def edit   #Lesson 59
     # raise request.inspect <<allows you to what sent in request
-    @user  = User.find(params[:id])
+    #@user  = User.find(params[:id])  #as already called in 'correct_user' >see Lesson62 @26:55
     @title = "Settings"
   end
 
   def update 
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])  #as already called in 'correct_user' >see Lesson62 @26:55
     if @user.update_attributes(params[:user])
       # update succesful
       flash[:success] = "Your changes have been saved!"
@@ -56,10 +57,16 @@ class UsersController < ApplicationController
     @title = "Members"
   end
 
+  def destroy
+    #User.find(params[:id]).destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = "The account '#{@user.name}' has been successfully deleted"  
+    redirect_to users_path
+  end
 
   
-
-
+#=====
 
   private
 
@@ -80,6 +87,16 @@ class UsersController < ApplicationController
       redirect_to(root_path) unless current_user?(@user)   
           #alternate syntax. Created a method 'current_user?'
           #see SessionsHelper and Lesson 60 @30:00
+    end
+
+    def admin_user
+      #redirect_to(root_path) unless current_user.admin?
+
+      @user = User.find(params[:id])  
+      # if current user is admin and not attempting to delete themselves 
+        #redirect_to(root_path) unless (current_user.admin? && !current_user?(@user) )
+      # alternate syntax
+        redirect_to(root_path) if !current_user.admin? || current_user?(@user)
     end
 
 end
