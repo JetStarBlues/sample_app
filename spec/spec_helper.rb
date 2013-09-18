@@ -28,7 +28,7 @@ RSpec.configure do |config|
   # Lesson 55 
   def test_sign_in(user)
     # @2:54
-      # controller.current_user = user
+      # controller.current_user == user
     # @7:40
     controller.sign_in(user)
   end

@@ -50,7 +50,9 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    # @users = User.all
+    #paginate gem Lesson 61 @26:00
+    @users = User.paginate(:page => params[:page])  #default of 30 per page
     @title = "Members"
   end
 

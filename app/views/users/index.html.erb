@@ -7,7 +7,9 @@
 			<span id="indexPic"><%= gravatar_for user, :size => 30 %></span>
 			<span id="indexName">&nbsp;&nbsp;<%= link_to user.name, user %></span>
 		</li>
-	<% end %>
-
+	<% end %>	
 </ul>
 
+<br>
+<%= will_paginate %>
+<br>
