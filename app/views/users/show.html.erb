@@ -6,13 +6,34 @@
 <%= @user.name %>
 </h1>
 
-
-<!--once done sidebar add the tests for link @ 31:00 -->
 <div class="sidebar round">
-<strong>Name</strong> <%= @user.name %> <br>
-<strong>Link</strong> <%= link_to user_path(@user), @user %>
-<!-- < link_to "content", path >  ...if content omitted, assumed -->
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><%= @user.name %></td>
+	</tr>
+	<tr>
+		<td><strong>Profile</strong></td>
+		<td><%= link_to user_path(@user), @user %></td>
+	</tr>
+	<tr>
+		<td><strong>Posts</strong></td>
+		<td><%= @user.microposts.count %></td>
+	</tr>
+</table>
 </div>
 
 <br>
-<p>Welcome to my profile page!</p>
+<div id="profileAbout">About..*(textarea input?) describe yourself in 150 char *would need to ensure spaces not concat on submission</div><br>
+
+
+<% if @user.microposts.any? %>
+	<div class ="microposts">
+		<%= render @microposts %>
+	</div>
+	<br>
+	<%= will_paginate @microposts %>
+	<br>
+<% end %>	
+
+

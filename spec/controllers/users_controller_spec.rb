@@ -3,7 +3,7 @@ require 'spec_helper'
 describe UsersController do
   render_views
 
-  #---
+  #---INDEX---#
   describe "GET 'index'" do
     describe "for non-signed-in users" do
       it "should deny acces to 'index'" do
@@ -75,7 +75,7 @@ describe UsersController do
     end
   end
 
-  #---
+  #---SHOW---#
   describe "GET 'show'" do
   #Lesson 42 (User Profile Page)
     before(:each) do
@@ -111,12 +111,34 @@ describe UsersController do
     # @ 31:00
     it "should have the right URL" do
       get :show, :id => @user
-      response.should have_selector('div>a', :content => user_path(@user),
+      response.should have_selector('td>a', :content => user_path(@user),
                                              :href    => user_path(@user))
     end
+
+    it "should show the user's microposts" do
+      mp1 = Factory(:micropost, :user => @user, :content => "Filler text")
+      mp2 = Factory(:micropost, :user => @user, :content => "2 Filler text")
+      get :show, :id => @user
+#might need to change this      
+      response.should have_selector("span.content", :content => mp1.content)
+      response.should have_selector("span.content", :content => mp2.content)
+    end
+
+    it "should paginate microposts" do
+      35.times { Factory(:micropost, :user => @user, :content => "Filler text") }
+      get :show, :id => @user      
+      response.should have_selector("div.pagination")
+    end
+
+    it "should display the micropost count" do
+      10.times { Factory(:micropost, :user => @user, :content => "Filler text") }
+      get :show, :id => @user      
+      response.should have_selector("td", :content => @user.microposts.count.to_s)
+    end
+
   end
  
-  #---
+  #---NEW---#
   describe "GET 'new'" do
 
     it "should be successful" do
@@ -130,7 +152,7 @@ describe UsersController do
     end 
   end
 
-  #---
+  #---CREATE---#
   #Lesson 46 (SignUp page)
   describe "POST 'create'" do
 
@@ -190,7 +212,7 @@ describe UsersController do
     end
   end  
 
-  #---
+  #---EDIT---#
   describe "GET 'edit'" do
     before(:each) do
       @user = Factory(:user)
@@ -215,7 +237,7 @@ describe UsersController do
     end
   end
 
-  #---
+  #---UPDATE---#
   describe "PUT 'update'" do
     before(:each) do
       @user = Factory(:user)
@@ -300,7 +322,7 @@ describe UsersController do
     end
   end
 
-  #---
+  #---DESTROY---#
   describe "DELETE 'destroy'" do
     before(:each) do
       @user = Factory(:user)

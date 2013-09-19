@@ -4,7 +4,7 @@ namespace :db do
 	desc "Fill database with sample users"
 	task :populate => :environment do  # :populate > name of task. To call, 'rake db:populate'
 									   # :environment > load Rails environment
-		#Rake::Task['db:reset'].invoke  #resets database
+		Rake::Task['db:reset'].invoke  #resets database
 		#User.create!(:name => "Susie Carmichael",  #if reset DB, this would be user whose info we know
 		admin = User.create!(:name => "Susie Carmichael",   #if reset DB, first user as admin
 			         :email	=> "susie@nick.com",
@@ -20,6 +20,12 @@ namespace :db do
 						 :email => email,
 						 :password => password,
 						 :password_confirmation => password)				
+		end
+
+		User.all(:limit => 10).each do |user| #limit to 10 users
+			50.times do
+				user.microposts.create!(:content => Faker::Lorem.sentence(5) )
+			end
 		end
 
 	end
