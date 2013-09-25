@@ -1,13 +1,16 @@
-<% if @user.errors.any? %>
+<% if object.errors.any? %>
 	<div id="signupError">
-		<h3>
-			<%= pluralize(@user.errors.count, "error") %>
+		<h3 style="margin-bottom:5px; font-size:15px; font-weight:bold;">
+			<%# <%= pluralize(object.errors.count, "error") %>		
 			<!--prohibited this user from being saved -->
-			are in the way of awesomeness!
+			<!--prohibited this <%= object.class.to_s.underscore.humanize.downcase %> from being saved -->
+			<!--in the way of awesomeness! -->
+			<%= pluralize(object.errors.count, "hurdle") %>
+			between you and awesomeness!
 		</h3>
-		<p> <!--There were problems with the following fields: --></p>
+		<!--<p>There were problems with the following fields:</p> -->
 		<ul>
-		<% @user.errors.full_messages.each do |message| %>
+		<% object.errors.full_messages.each do |message| %>
 			<li><%= message %></li><% end %>
 		</ul>
 	</div>

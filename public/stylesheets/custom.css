@@ -68,11 +68,11 @@ footer nav
 {
 	margin-left: 15px;
 }
-
 #indent2
 {
 	margin-left: 10px;
 }
+
 
 #UserProfileHeader
 {
@@ -90,6 +90,11 @@ footer nav
 {
 	margin-top:250px;  /* gif + footer */
 	position: relative;
+}
+
+span#emoticon:hover
+{
+	color: #FF8C00;
 }
 
 
@@ -141,7 +146,10 @@ td
 }
 #signupError h3
 {
-	margin-left:10px;
+	margin-left:10px;	
+	margin-bottom:5px; 
+	font-size:15px; 
+	font-weight:bold;
 }
 
 
@@ -206,7 +214,8 @@ div.micropost
 {
 	border-bottom: 1px solid;
 	border-color: #737373;
-	padding:6px 0px 6px 4px; /*top,right,bottom,left*/
+	padding:6px 0px 8px 4px; /*top,right,bottom,left*/
+	cursor: default;
 }
 div.micropost:hover
 {
@@ -221,6 +230,86 @@ div#profileAbout
 {
 	width:500px;
 }
+
+/* Micropost Form */
+form.new_micropost textarea
+{
+	resize: none;
+	width:350px;
+	height:100px;
+	padding:5px;
+	margin-top:13px;
+}
+div#Btn3
+{
+	/*width: 510px;*/
+	width: 360px;
+}
+span#Btn3
+{
+	float: right;
+}
+
+/* userInfoBox */ 
+div.userInfoBox{margin-top:70px;}
+
+div#handle {width: 250px; color: #000;}
+div#handle a {color: #000;}
+div#infoBox_Gravatar
+{
+	display:inline-block;
+	vertical-align: 5px;
+} 
+div#infoBox_info
+{
+	display:inline-block;
+	margin-left: 13px;
+}
+
+div#infoBox_follow
+{
+	width:250px; /*200px*/
+	height: 70px;
+	margin-top: 13px;
+	display:-moz-box; /* Firefox */
+	display:-webkit-box; /* Safari and Chrome */
+	display:-ms-flexbox; /* Internet Explorer 10 */
+}
+div#following
+{
+	background-color:green;
+	-moz-box-flex:1.0; /* Firefox */
+	-webkit-box-flex:1.0; /* Safari and Chrome */
+	-ms-flex:1.0; /* Internet Explorer 10 */
+}
+div#followers
+{
+	background-color:red;
+	-moz-box-flex:2.0; /* Firefox */
+	-webkit-box-flex:2.0; /* Safari and Chrome */
+	-ms-flex:2.0; /* Internet Explorer 10 */
+}
+
+/*Feed*/
+div.feed
+{
+	width:600px;
+	height:400px;
+	position:absolute;
+	top: 91px;
+	left:450px;
+	background-color: #abcdef;
+}
+div#feedTitle
+{
+	border-bottom: 1px solid;
+	padding-left: 15px;
+	font-weight: normal;
+	font-size: 40px;
+	/*background-color:#cdc;*/
+}
+
+
 
 
 /*

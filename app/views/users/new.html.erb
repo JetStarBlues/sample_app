@@ -2,7 +2,7 @@
 <p>Find me in app/views/users/new.html.erb</p>
 
 <%= form_for(@user) do |f| %>
-	<%= render 'shared/error_messages' %>
+	<%= render 'shared/error_messages', :object => f.object %>
 		<div id="register">
 			<div><%= f.label :name %></div> <div><%= f.text_field :name %></div>
 			<div><%= f.label :email %></div> <div><%= f.text_field :email %></div>

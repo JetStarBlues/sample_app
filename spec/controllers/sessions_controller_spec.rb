@@ -48,9 +48,14 @@ describe SessionsController do
         controller.should be_signed_in
       end
 
-      it "should redirect to the user show page" do
+      # it "should redirect to the user show page" do
+      #   post :create, :sessions => @attr
+      #   response.should redirect_to(user_path(@user))
+      # end
+
+      it "should redirect to the home page" do  #assuming feed and textbox are here
         post :create, :sessions => @attr
-        response.should redirect_to(user_path(@user))
+        response.should redirect_to(root_path)
       end
     end
   end

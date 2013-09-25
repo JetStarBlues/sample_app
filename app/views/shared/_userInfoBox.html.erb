@@ -1,0 +1,33 @@
+<div id="infoBox_Container"><!--use div to control dimensions-->
+
+
+<div id="handle">
+	<a href="<%= user_path(current_user) %>"><div>
+	<div id="infoBox_Gravatar">
+		<%= gravatar_for current_user, :size => 70 %>
+	</div>
+
+
+	<div id="infoBox_info">
+	<table>
+		<tr>
+			<td><strong><%= current_user.name %></strong></td>
+		</tr>
+		<!--<tr>
+			<%#   <td><%= link_to "View my profile", user_path(current_user) %></td>    %>
+		</tr>-->
+		<tr>
+			<td><%= pluralize(current_user.microposts.count, "post") %></td>
+		</tr>
+	</table>
+	</div>
+	</div></a>
+</div>
+
+<div id="infoBox_follow">
+	<div id="following">?</div><!--inherit width? & flex -->
+	<div id="followers">!</div>
+</div>
+
+
+</div>

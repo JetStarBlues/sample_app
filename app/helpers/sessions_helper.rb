@@ -32,6 +32,10 @@ module SessionsHelper
 		current_user = nil
 	end		
 
+    def authenticate
+      deny_access unless signed_in?
+    end
+
 	def deny_access  #Lesson 60 @11:00 and @17:00
 		store_location
 		flash[:notice] = "You gotta sign in to access this page."

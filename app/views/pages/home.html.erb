@@ -1,3 +1,38 @@
+<% if !signed_in? %>
+
 <h1>Home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<br>
+<span style="font-size:15px"><strong>Greetings <span id="emoticon">=D</span>!</strong></span><br><br>
+<div style="margin-left:3px;">
+	<p>A pleasure to see <span id="emoticon">you</span> again!</p>
+	<p>Not a moment to spare! Follow me!</p>
+	<p>Come now, don't be shy! &nbsp;Click on that yellow button below!</p>
+	<p>Or if this all seems like deja vu, that blue link above.</p>
+</div><br>
 <%= link_to "Sign up now!", signup_path, :class=> "signup_button round" %>
+<br>
+
+<% else %>
+
+<!--
+<h1>Home</h1><br>
+-->
+
+<div class="userInfoBox">
+	<%= render 'shared/userInfoBox' %>
+</div>
+
+
+<div class="postForm">
+	<%= render 'shared/micropost_form' %>
+</div>
+
+<div class="feed">
+	<div id="feedTitle"><span>Feed</span></div>
+</div>
+
+
+<br><br>
+
+
+<% end %>

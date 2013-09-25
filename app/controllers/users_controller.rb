@@ -73,16 +73,6 @@ class UsersController < ApplicationController
 
   private
 
-    ##Created a generic 'deny_access' instead. See 'sessions_helper.rb'
-    ##Lesson 60 @11:00
-    # def authenticate   
-    #   flash[:notice] = "You gotta sign in to access this page."
-    #   redirect_to signin_path unless signed_in?
-    # end
-    def authenticate
-      deny_access unless signed_in?
-    end
-
     def correct_user
       # compare users
       @user = User.find(params[:id])  
