@@ -33,7 +33,7 @@ end
 
 group :production do 
 	gem 'pg'
-	gem 'faker', '0.3.1'
+	gem 'faker', '0.3.1' #heroku push doesn't work otherwise
 end
 
 
