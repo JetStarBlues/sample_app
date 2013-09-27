@@ -208,10 +208,27 @@ describe User do
       #     Micropost.find(micropost.id)
       #   end.should raise_error(ActiveRecord::RecordNotFound)
       # end
+    end  
+
+  #Lesson 68
+    describe "feed" do
+      it "should have a feed" do
+        @user.should respond_to(:feed)
+      end
+
+      it "should include the user's posts" do
+        #@user.feed.include?(@mp1).should be_true  #alternate way
+        @user.feed.should include(@mp1)
+        @user.feed.should include(@mp2)
+      end
+
+      it "should not include posts of a non-followed user" do
+        @mp3 = Factory(:micropost, 
+                       :user => Factory(:user, :email => Factory.next(:email)))
+        @user.feed.should_not include(@mp3)
+      end
 
     end
-
   end
-
   
 end

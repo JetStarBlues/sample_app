@@ -15,7 +15,7 @@ describe "Users" do
 	  			fill_in "Confirm password",	:with => ""
 	  			click_button
 	  			response.should render_template('users/new')
-	  			response.should have_selector('div#signupError')  #id
+	  			response.should have_selector('div#errorMessage')  #id
 	  		end.should_not change(User, :count)
   		end
   	end  

@@ -140,14 +140,17 @@ td
 {
 	margin-top: 5px;
 }
-#signupError li
+
+/* shared Error Messages */
+#errorMessage li
 {
 	margin-left:15px;
 }
-#signupError h3
+#errorMessage h3
 {
 	margin-left:10px;	
-	margin-bottom:5px; 
+	margin-bottom:5px;
+	margin-top:10px; 
 	font-size:15px; 
 	font-weight:bold;
 }
@@ -221,15 +224,39 @@ div.micropost:hover
 {
 	background-color: #F2F2F2;
 }
-span.content{}
-span.timestamp
+div#gravatarComment
 {
-	color: #8C8C8C;
+	display:inline-block;
+	padding-left: 3px;
+	vertical-align: top;
+	background-color:#abc;
+}
+div.content
+{
+	white-space: pre-wrap; 
+	margin-left: 7px; display:inline-block;
+	background-color:red;
+}
+div#actionBar
+{
+	text-align: right;
+}
+div#deletePost {display:none;}
+div.micropost:hover div#deletePost
+{
+	display:inline-block; 
+	margin-right: 25px;
+}
+div.timestamp
+{
+	color: #8C8C8C; 
+	display:inline-block; 
 }
 div#profileAbout
 {
 	width:500px;
 }
+
 
 /* Micropost Form */
 form.new_micropost textarea
@@ -238,12 +265,13 @@ form.new_micropost textarea
 	width:350px;
 	height:100px;
 	padding:5px;
-	margin-top:13px;
+	margin-top:13px;	
 }
 div#Btn3
 {
 	/*width: 510px;*/
 	width: 360px;
+	margin-bottom: 70px;  /*gif*/
 }
 span#Btn3
 {
@@ -264,6 +292,7 @@ div#infoBox_info
 {
 	display:inline-block;
 	margin-left: 13px;
+	border:none;
 }
 
 div#infoBox_follow
@@ -271,20 +300,22 @@ div#infoBox_follow
 	width:250px; /*200px*/
 	height: 70px;
 	margin-top: 13px;
+	border-top:1px solid;
 	display:-moz-box; /* Firefox */
 	display:-webkit-box; /* Safari and Chrome */
 	display:-ms-flexbox; /* Internet Explorer 10 */
 }
 div#following
 {
-	background-color:green;
+	/*background-color:green;*/
+	border-right: 1px solid;
 	-moz-box-flex:1.0; /* Firefox */
 	-webkit-box-flex:1.0; /* Safari and Chrome */
 	-ms-flex:1.0; /* Internet Explorer 10 */
 }
 div#followers
 {
-	background-color:red;
+	/*background-color:red;*/
 	-moz-box-flex:2.0; /* Firefox */
 	-webkit-box-flex:2.0; /* Safari and Chrome */
 	-ms-flex:2.0; /* Internet Explorer 10 */
@@ -293,91 +324,21 @@ div#followers
 /*Feed*/
 div.feed
 {
-	width:600px;
-	height:400px;
+	width:500px;
+	/*height:400px;*/
 	position:absolute;
-	top: 91px;
+	top: 90px;
 	left:450px;
-	background-color: #abcdef;
+	/*background-color: #abcdef;*/
 }
 div#feedTitle
 {
-	border-bottom: 1px solid;
-	padding-left: 15px;
+	border-bottom: 1.5px solid;
+	margin-bottom: 8px;
+	padding-left: 5px;
 	font-weight: normal;
 	font-size: 40px;
 	/*background-color:#cdc;*/
 }
 
 
-
-
-/*
-h1.micropost 
-{
-	margin-bottom: 0.3em;
-}
-
-table.microposts
-{
-	margin-top: 1em;
-}
-
-table.microposts tr
-{
-	height: 70px;
-}
-
-table.microposts tr td.gravatar
-{
-	border-top: 1px solid #ccc;
-	vertical-align: top;
-	width: 50px;
-}
-
-table.microposts tr td.micropost
-{
-	border-top: 1px solid #ccc;
-	vertical-align: top;
-	width: 10px;
-}
-
-table.microposts tr td.micropost span.timestamp
-{
-	display:block;
-	font_size 85%
-	color: #666;
-}
-
-div.user_info img 
-{
-	padding-right: 0.1em;
-}
-
-div.user_info a 
-{
-	text-decoration: none;
-}
-
-div.user_info span.user_name
-{
-	position: absolute;
-}
-
-div.user_info span.microposts
-{
-	font-size: 80%;
-}
-
-form.new_micropost
-{
-	margin-bottom: 2em;
-}
-
-form.new_micropost textarea
-{
-	height: 4em;
-	margin-botton: 0;
-}
-
-*/

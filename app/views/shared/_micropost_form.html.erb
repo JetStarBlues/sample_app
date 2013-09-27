@@ -1,7 +1,8 @@
 <%= form_for(@micropost) do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>
 	<div><%= f.text_area :content, :placeholder => "What's on your mind?",
-								   :maxlength => 150
+								   :maxlength => 150,
+								   :wrap => "soft"
 	%></div>
 	<div id="Btn3"><span id="Btn3"><%= f.submit "Post" %></span></div>
 <% end %>

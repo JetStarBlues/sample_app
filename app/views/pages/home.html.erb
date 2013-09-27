@@ -28,11 +28,20 @@
 </div>
 
 <div class="feed">
-	<div id="feedTitle"><span>Feed</span></div>
+
+	<div id="feedTitle">Feed</div>
+
+	<% if @feed_items.any? %>
+		<div class ="feedContent">
+			<%= render @feed_items %>
+		</div>
+		<br>
+		<%= will_paginate @feed_items %>
+		<br>
+	<% end %>	
+
 </div>
 
-
-<br><br>
 
 
 <% end %>
