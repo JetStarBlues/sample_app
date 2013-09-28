@@ -405,6 +405,7 @@ div#followers
 }
 div#following:hover{background-color: #EEE9E9;}
 div#followers:hover{background-color: #EEE9E9;}
+span#numFollowers{font-weight: bold; display: block;}
 
 /*Feed*/
 div.feed

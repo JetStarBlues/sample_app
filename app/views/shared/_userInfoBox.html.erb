@@ -43,9 +43,9 @@
 	<a href="<%= followers_user_path(@user) %>" >
 	<div id="followers">
 		<% if @user.followers.count == 1 %>
-			<strong><%= @user.followers.count %></strong><br> follower
+			<span id="numFollowers"><%= @user.followers.count %></span> follower <!-- @50:00 ajax-->
 		<% else %>
-			<strong><%= @user.followers.count %></strong><br> followers		
+			<span id="numFollowers"><%= @user.followers.count %></span> followers		
 		<% end %>
 	</div>
 	</a>

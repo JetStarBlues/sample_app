@@ -1,0 +1,28 @@
+class RelationshipsController < ApplicationController
+	before_filter :authenticate
+
+	def create
+		#raise params.inspect
+		@user = User.find(params[:relationship][:followed_id])
+		current_user.follow!(@user)
+		#redirect_to @user
+		respond_to do |format|  #something about AJAX
+			format.html {redirect_to @user}
+			format.js
+		end
+	end
+
+	def destroy
+		#alternate way
+			# relationship = Relationship.find(params[:id]).destroy
+			# redirect_to relationship.followed
+		@user = Relationship.find(params[:id]).followed
+		current_user.unfollow!(@user)
+		#redirect_to @user
+		respond_to do |format|  #something about AJAX ... if js enabled, preference given
+			format.html {redirect_to @user}
+			format.js
+		end
+	end
+
+end
