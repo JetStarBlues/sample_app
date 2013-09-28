@@ -3,8 +3,16 @@ SampleApp::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]  #Lesson 52 @7:00, limit actions avail
   #get "sessions/new"
 
-  resources :users
   #get "users/new"
+  resources :users do
+    member do
+      get :following, :followers   # URL         ->  /users/1/following
+                                   # Named Route ->  following_user_path(1)
+                                   # Action      ->  following
+                                   # ibid. for 'followers'
+    end
+  end
+ 
 
   resources :microposts, :only => [:create, :destroy]
 

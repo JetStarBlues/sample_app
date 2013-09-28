@@ -9,15 +9,18 @@
 
 
 	<div id="infoBox_info">
+	<% @user ||= current_user %>
 	<table>
 		<tr>
-			<td><strong><%= current_user.name %></strong></td>
+			<!--<td><span id="infoBox_name"><%= current_user.name %></span></td>-->
+			<td><span id="infoBox_name"><%= @user.name %></span></td>
 		</tr>
 		<!--<tr>
 			<%#   <td><%= link_to "View my profile", user_path(current_user) %></td>    %>
-		</tr>-->
+		</tr>-->		
 		<tr>
-			<td><%= pluralize(current_user.microposts.count, "post") %></td>
+			<!--<%# <td><%= pluralize(current_user.microposts.count, "post") %></td> -->
+			<td><%= pluralize(@user.microposts.count, "post") %></td>
 		</tr>
 	</table>
 	</div>
@@ -25,8 +28,22 @@
 </div>
 
 <div id="infoBox_follow">
-	<div id="following">?</div><!--inherit width? & flex -->
-	<div id="followers">!</div>
+<% @user ||= current_user %> <!-- Lesson73 @10:40 -->
+	<a href="<%= following_user_path(@user) %>" >
+	<div id="following">
+		<strong><%= @user.following.count %></strong><br> following
+	</div>
+	</a>
+
+	<a href="<%= followers_user_path(@user) %>" >
+	<div id="followers">
+		<% if @user.followers.count == 1 %>
+			<strong><%= @user.followers.count %></strong><br> follower
+		<% else %>
+			<strong><%= @user.followers.count %></strong><br> followers		
+		<% end %>
+	</div>
+	</a>
 </div>
 
 

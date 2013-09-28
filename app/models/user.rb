@@ -6,7 +6,16 @@ class User < ActiveRecord::Base
 	attr_accessible :name, :email, :password, :password_confirmation
 
 	#Lesson 66 - associations with other models
-	has_many :microposts, :dependent => :destroy  #when delete user, also delete assoc microposts
+	has_many :microposts,    		 :dependent   => :destroy  #when delete user, also delete assoc microposts
+	has_many :relationships, 		 :dependent   => :destroy,
+							 		 :foreign_key => "follower_id"
+	has_many :reverse_relationships, :dependent   => :destroy,
+									 :foreign_key => "followed_id",
+									 :class_name  => "Relationship"
+	has_many :following,     		 :through     => :relationships,
+							 		 :source      => :followed
+	has_many :followers, 	 		 :through     => :reverse_relationships,
+					     	 		 :source      => :follower
 
     #check if name & email present
     	#Lesson 36
@@ -57,6 +66,22 @@ class User < ActiveRecord::Base
 			Micropost.where("user_id = ?", id)  #use of '?' as placeholder to prevent SQL injection
 
 	end
+
+	#Lesson 72 @22:00
+	def following?(followed)
+		#self.relationships.find_by_followed_id(followed)
+		relationships.find_by_followed_id(followed)		
+	end
+
+	def follow!(followed)
+		relationships.create!(:followed_id => followed.id)
+	end
+
+	def unfollow!(followed)
+		relationships.find_by_followed_id(followed).destroy
+	end
+
+	
 
 
 	#set as private since only used in User model

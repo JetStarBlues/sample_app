@@ -1,40 +1,59 @@
 <!--manually created page, Lesson 37 @ 4:30 -->
 
-<h1 id ="UserProfileHeader">
-<%= gravatar_for @user %>
-<!--how to setup so that users upload own images?-->
-<%= @user.name %>
-</h1>
+<!--
+	<h1 id ="UserProfileHeader">
+	<%= gravatar_for @user %>
+	<%# how to setup so that users upload own images?  %>
+	<%= @user.name %>
+	</h1>
 
-<div class="sidebar round">
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><%= @user.name %></td>
-	</tr>
-	<tr>
-		<td><strong>Profile</strong></td>
-		<!--<td><%= link_to user_path(@user), @user %></td>-->
-		<td><%= link_to "link", @user %></td>		
-	</tr>
-	<tr>
-		<td><strong>Posts</strong></td>
-		<td><%= @user.microposts.count %></td>
-	</tr>
-</table>
-</div>
-
-<br>
-<div id="profileAbout">About..*<span style="color:red">(textarea input?)</span> describe yourself in 150 char *would need to ensure spaces not concat on submission...also probably DB field</div><br>
-
-
-<% if @user.microposts.any? %>
-	<div class ="microposts">
-		<%= render @microposts %>
+	<div class="sidebar round">
+	<table>
+		<tr>
+			<td><strong>Name</strong></td>
+			<td><%= @user.name %></td>
+		</tr>
+		<tr>
+			<td><strong>Profile</strong></td>
+			<%# #<%= link_to user_path(@user), @user %>  %>  
+			<%# <td><%= link_to "link", @user %></td>	 %>
+		</tr>
+		<tr>
+			<td><strong>Posts</strong></td>
+			<td><%= @user.microposts.count %></td>
+		</tr>
+	</table>
 	</div>
 	<br>
-	<%= will_paginate @microposts %>
-	<br>
-<% end %>	
+-->
 
+
+
+
+<div class="userInfoBox">
+	<%= render 'shared/userInfoBox' %>
+</div>
+
+
+<div id="profileAbout">*describe yourself in 150 char. Probably <span style="color:red">DB field</span> editable through settings</div>
+
+
+<div class="feed"> <!--can change class name -->
+
+	<% if @user == current_user %>
+	<div id="feedTitle">My Posts</div>
+	<% else %>
+	<div id="feedTitle">Posts</div>
+	<% end %>
+
+	<% if @user.microposts.any? %>
+		<div class ="microposts">
+			<%= render @microposts %>
+		</div>
+		<br>
+		<%= will_paginate @microposts %>
+		<br>
+	<% end %>	
+
+</div>
 
