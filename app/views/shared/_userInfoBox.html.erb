@@ -36,16 +36,20 @@
 <% @user ||= current_user %> <!-- Lesson73 @10:40 -->
 	<a href="<%= following_user_path(@user) %>" >
 	<div id="following">
-		<strong><%= @user.following.count %></strong><br> following
+		<!--<strong><%= @user.following.count %></strong><br> following-->
+		<span id="numFollowing"><%= @user.following.count %></span>
+		<span>following</span>
 	</div>
 	</a>
 
 	<a href="<%= followers_user_path(@user) %>" >
 	<div id="followers">
 		<% if @user.followers.count == 1 %>
-			<span id="numFollowers"><%= @user.followers.count %></span> follower <!-- @50:00 ajax-->
+			<span id="numFollowers"><%= @user.followers.count %></span>
+			<span id="txtFollowers">follower</span> <!-- @50:00 ajax-->
 		<% else %>
-			<span id="numFollowers"><%= @user.followers.count %></span> followers		
+			<span id="numFollowers"><%= @user.followers.count %></span>
+			<span id="txtFollowers">followers</span>	
 		<% end %>
 	</div>
 	</a>
