@@ -4,37 +4,9 @@ body
 	padding-top: 20px;
 	padding-left: 20px;
 }
-
 a { text-decoration: none; }
-
 a:hover { text-decoration: underline; }
-
 a:visited{}
-
-nav
-{
-	float: right;
-	white-space: nowrap;
-}
-
-nav ul li
-{
-	list-style-type: : none;
-	display: inline;
-	padding-right: 5px;
-}
-
-a.signup_button
-{
-	display: block;
-	text-align: center;
-	background: #FF8C00;
-	font-weight: bold;
-	width: 90px;
-	color:black;
-	padding: 2px;
-	margin-left: 4px;
-}
 
 .round
 {
@@ -49,21 +21,6 @@ a.signup_button
 	float:left;
 }
 
-footer
-{
-	margin-top:180px;  /* 40px without gif */
-	position: absolute;
-	float: left;
-	width: 140px;
-	height:20px;
-	/* if want to center .... margin-left: auto; margin-right: auto; */
-}
-
-footer nav
-{
-	text-align:left;
-}
-
 #indent
 {
 	margin-left: 15px;
@@ -71,13 +28,6 @@ footer nav
 #indent2
 {
 	margin-left: 10px;
-}
-
-
-#UserProfileHeader
-{
-	font-size:2.75em;line-height:1;margin-bottom:0.5em;	
-	white-space: nowrap;
 }
 
 .gravatar
@@ -92,10 +42,68 @@ footer nav
 	position: relative;
 }
 
-span#emoticon:hover
+
+/* Top Nav */
+nav
 {
-	color: #FF8C00;
+	float: right;
+	white-space: nowrap;
 }
+nav ul li
+{
+	list-style-type: : none;
+	display: inline;
+	padding-right: 5px;
+}
+li#signInBtn{}
+
+
+/* Bottom Nav */
+footer
+{
+	margin-top:180px;  /* 40px without gif */
+	position: absolute;
+	float: left;
+	width: 140px;
+	height:20px;
+	/* if want to center .... margin-left: auto; margin-right: auto; */
+}
+footer nav
+{
+	text-align:left;
+}
+
+
+/* Home (not-signedin) */
+a.signup_button
+{
+	display: block;
+	text-align: center;
+	background: #FF8C00;
+	font-weight: bold;
+	width: 90px;
+	color:black;
+	padding: 2px;
+	margin-left: 4px;
+	margin-bottom: 20px;
+
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.39);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FFA812), color-stop(100%, #FF8C00));
+	background: -webkit-linear-gradient(top, #FFA812, #FF8C00);
+	background: -moz-linear-gradient(top, #FFA812, #FF8C00);
+
+}
+a.signup_button:hover{
+	text-decoration: none;
+	background: #EE7600;
+}
+div#welcome{cursor: default; margin-left:7px;}
+span.hello {
+	font-size:15px; 
+	font-family:tahoma;
+	font-weight: bold;	
+}
+span#hello:hover{ color: #FF8C00; }
 
 
 /* Sidebar */
@@ -115,10 +123,7 @@ tbody tr:nth-child(even) td, tbody tr.even td
 {
 	background:#ffffff;
 }
-td 
-{
-	padding:0px 5px 2px 0px;
-}
+td { padding:0px 5px 2px 0px; }
 
 
 /* Signup Form */
@@ -184,28 +189,20 @@ td
 
 
 /* Index */
-#editPic
-{
-	vertical-align:-5px;
-}
-.editPic
-{
-	margin-left: 10px;
-	margin-bottom: 5px;
-}
-ul.members
-{
-	
-}
+#editPic {/*vertical-align:-5px;*/}
+ul.members{}
 ul.members li
 {
 	list-style: none;
-	margin-top: 15px;
+	margin-left: -13px; /* remove list indent */
+	width:491px;
+	padding:8px 0px 14px 4px;
+	border-bottom: 1px solid;
+	border-color: #8B7D7B;
+	/*background-color: #abc;*/
 }
-#indexName
-{
-	padding-right: 15px;
-}
+ul.members li:hover{ background-color: #F2F2F2; }
+#indexName { padding-left: 5px; padding-right: 15px;}
 
 
 /* Microposts */
@@ -259,6 +256,11 @@ div.timestamp
 
 
 /* Profile */
+/*#UserProfileHeader
+{
+	font-size:2.75em;line-height:1;margin-bottom:0.5em;	
+	white-space: nowrap;
+}*/
 div#profileAbout
 {
 	width:325px;
@@ -284,7 +286,7 @@ div#FollowButton input#relationship_submit
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	
-	/*http://charliepark.org/bootstrap_buttons/*/
+	/* http://charliepark.org/bootstrap_buttons/ */
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(193, 32%, 79%)), color-stop(100%, hsl(193, 32%, 49%)));
 	background: -webkit-linear-gradient(top, hsl(193, 32%, 79%), hsl(193, 32%, 49%));
 	background: -moz-linear-gradient(top, hsl(193, 32%, 79%), hsl(193, 32%, 49%));
@@ -309,7 +311,7 @@ div#UnfollowButton input#relationship_submit
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	
-	/*http://charliepark.org/bootstrap_buttons/*/
+	/* http://charliepark.org/bootstrap_buttons/ */
 	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.69);
 	background: -webkit-linear-gradient(top, hsl(0, 0%, 121%), hsl(0, 0%, 79%));
 	background: -moz-linear-gradient(top, hsl(0, 0%, 121%), hsl(0, 0%, 79%));

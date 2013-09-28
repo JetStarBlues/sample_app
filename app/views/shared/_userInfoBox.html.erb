@@ -1,15 +1,20 @@
-<div id="infoBox_Container"><!--use div to control dimensions-->
+<div id="infoBox_Container">
+<% @user ||= current_user %>
 
-
-<div id="handle">
+	<div id="handle">
+	<!--
 	<a href="<%= user_path(current_user) %>"><div>
 	<div id="infoBox_Gravatar">
-		<%= gravatar_for current_user, :size => 70 %>
+		<%#  <%= gravatar_for current_user, :size => 70 %>
+	</div>
+	-->
+	<a href="<%= user_path(@user) %>"><div>
+	<div id="infoBox_Gravatar">
+		<%= gravatar_for @user, :size => 70 %>
 	</div>
 
 
 	<div id="infoBox_info">
-	<% @user ||= current_user %>
 	<table>
 		<tr>
 			<!--<td><span id="infoBox_name"><%= current_user.name %></span></td>-->

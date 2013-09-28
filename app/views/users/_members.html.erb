@@ -1,0 +1,19 @@
+<ul class="members">
+	<% @users.each do |user| %>
+		<li>
+			<a href="<%= user_path(user) %>">
+			<span id="indexPic"><%= gravatar_for user, :size => 30 %></span></a>
+			<span id="indexName"><%= link_to user.name, user %></span>
+			<span>-->&nbsp;</span>
+			<% if current_user.admin? %>
+			<span><%= link_to "delete", user, :method => :delete,
+											  :confirm => "Are you sure?",
+											  :title => "Delete #{user.name}" %></span>
+			<% end %>
+		</li>
+	<% end %>	
+</ul>
+
+<br>
+<%= will_paginate %>
+<br>
