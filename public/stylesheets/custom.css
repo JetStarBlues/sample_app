@@ -266,10 +266,63 @@ div#profileAbout
 	margin-top: 15px;
 	padding-top: 5px;
 	padding-bottom: 15px;
-	margin-bottom: 50px;
 	color: #4A4A4A;
 }
 
+
+/* Follow/Unfollow */
+div#FollowButton{ margin-bottom: 50px; }
+div#UnfollowButton{	margin-bottom: 50px;}
+div#FollowButton input#relationship_submit
+{
+	color: #FFF; font-weight: bold; font-family: tahoma;
+	border: 1px solid;
+	padding: 5px;
+	cursor: pointer;
+
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	
+	/*http://charliepark.org/bootstrap_buttons/*/
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(193, 32%, 79%)), color-stop(100%, hsl(193, 32%, 49%)));
+	background: -webkit-linear-gradient(top, hsl(193, 32%, 79%), hsl(193, 32%, 49%));
+	background: -moz-linear-gradient(top, hsl(193, 32%, 79%), hsl(193, 32%, 49%));
+	background-color: hsl(193, 32%, 49%);
+    background-repeat: repeat-x;
+    border-color: hsl(193, 32%, 49%) hsl(193, 32%, 49%) hsl(193, 32%, 41.5%);    
+}
+div#FollowButton input#relationship_submit:hover
+{
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(193, 32%, 59%)), color-stop(100%, hsl(193, 32%, 39%)));
+	background: -webkit-linear-gradient(top, hsl(193, 32%, 59%), hsl(193, 32%, 39%));
+	background: -moz-linear-gradient(top, hsl(193, 32%, 59%), hsl(193, 32%, 39%));
+}
+div#UnfollowButton input#relationship_submit
+{
+	color: #333; font-weight: normal; font-family: tahoma;
+	border: 1px solid;
+	padding: 5px;
+	cursor: pointer;
+
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	
+	/*http://charliepark.org/bootstrap_buttons/*/
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.69);
+	background: -webkit-linear-gradient(top, hsl(0, 0%, 121%), hsl(0, 0%, 79%));
+	background: -moz-linear-gradient(top, hsl(0, 0%, 121%), hsl(0, 0%, 79%));
+	background-color: hsl(0, 0%, 79%);
+    background-repeat: repeat-x;
+    border-color: hsl(0, 0%, 79%) hsl(0, 0%, 79%) hsl(0, 0%, 68.5%);  
+}
+div#UnfollowButton input#relationship_submit:hover
+{
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(0, 0%, 99%)), color-stop(100%, hsl(0, 0%, 69%)));
+	background: -webkit-linear-gradient(top, hsl(0, 0%, 99%), hsl(0, 0%, 69%));
+	background: -moz-linear-gradient(top, hsl(0, 0%, 99%), hsl(0, 0%, 69%));
+}
 
 
 /* Micropost Form */

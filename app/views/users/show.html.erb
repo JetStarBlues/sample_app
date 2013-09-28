@@ -38,6 +38,11 @@
 <div id="profileAbout">*describe yourself in 150 char. Probably <span style="color:red">DB field</span> editable through settings</div>
 
 
+<div id="follow_unfollow">
+	<%= render 'follow_form' if signed_in? %>
+</div>
+
+
 <div class="feed"> <!--can change class name -->
 
 	<% if @user == current_user %>
