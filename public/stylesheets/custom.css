@@ -43,34 +43,36 @@ a:visited{}
 }
 
 
+nav{white-space: nowrap;}
+nav ul{margin-left:-20px;} /* remove list indent */
+
 /* Top Nav */
-nav
-{
-	float: right;
-	white-space: nowrap;
-}
+nav.topNav{float: right;}
 nav ul li
 {
 	list-style-type: : none;
 	display: inline;
-	padding-right: 5px;
+	margin-right: 3px; margin-left: 3px; 
+	padding: 0px 2px 3px 2px; /*top,right,bottom,left*/
 }
+nav.topNav ul li.lineVisible{border-bottom: 5px solid #FF7F00;}
+nav.topNav ul li.lineHidden{border-bottom: 5px solid rgba(0,0,0,0); } /*100% transparent */
+nav.topNav ul li a {color: #000;}
+nav.topNav ul li a:hover {text-decoration:none; color: #8B4513;}
+
 li#signInBtn{}
 
 
 /* Bottom Nav */
 footer
 {
-	margin-top:180px;  /* 40px without gif */
+	margin-top: 180px;  /* 40px without gif */
+	margin-right: 10px;
 	position: absolute;
 	float: left;
 	width: 140px;
 	height:20px;
 	/* if want to center .... margin-left: auto; margin-right: auto; */
-}
-footer nav
-{
-	text-align:left;
 }
 
 

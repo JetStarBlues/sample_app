@@ -8,20 +8,23 @@
 	<%= stylesheet_link_tag 'custom', :media => 'screen' %>
 	<%= javascript_include_tag 'prototype' %>
 	<%= javascript_include_tag 'rails' %>
+	<%= javascript_include_tag 'custom_tabNav' %>
+
+</head>
 
 <body>
 			
-	<nav class="round">
-		<ul>
-			<li><%= link_to "Home", home_path %></li>
-			<li><%= link_to "Help", help_path %></li>			
+	<nav class="topNav">
+		<ul id="topNav">
+			<li name="line" class="lineHidden"><%= link_to "Home", home_path %></li>
+			<li name="line" class="lineHidden"><%= link_to "Help", help_path %></li>			
 			<% if signed_in? %>
-				<li><%= link_to "Members", users_path %></li>
-				<li><%= link_to "My profile", current_user %></li>
-				<li><%= link_to "Settings", edit_user_path(current_user) %></li>
-				<li><%= link_to "Sign out", signout_path %></li>
+				<li name="line" class="lineHidden"><%= link_to "Members", users_path %></li>
+				<li name="line" class="lineHidden"><%= link_to "My profile", current_user %></li>
+				<li name="line" class="lineHidden"><%= link_to "Settings", edit_user_path(current_user) %></li>
+				<li name="line" class="lineHidden"><%= link_to "Sign out", signout_path %></li>
 			<% else %>
-				<li id="signInBtn"><%= link_to "Sign in", signin_path %></li>
+				<li name="line" class="lineHidden" id="signInBtn"><%= link_to "Sign in", signin_path %></li>
 			<% end %>		
 		</ul>
 	</nav>
