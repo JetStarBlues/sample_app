@@ -222,11 +222,19 @@ describe User do
         @user.feed.should include(@mp2)
       end
 
-      it "should not include posts of a non-followed user" do
+      it "should not include posts of non-followed users" do
         @mp3 = Factory(:micropost, 
                        :user => Factory(:user, :email => Factory.next(:email)))
         @user.feed.should_not include(@mp3)
       end
+
+      it "should include posts of followed users" do
+        @followed = Factory(:user, :email => Factory.next(:email))
+        @mp3 = Factory(:micropost, :user => @followed)
+        @user.follow!(@followed)
+        @user.feed.should include(@mp3)
+      end
+
     end
   end
 

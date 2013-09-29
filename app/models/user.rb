@@ -34,6 +34,12 @@ class User < ActiveRecord::Base
 
 		before_save :encrypt_password
 
+	#scope :admin, where(:admin => true)  #Lesson74 @16:00
+										 # Allows you to call 'User.admin' which returns 
+										 # an array of all admins.
+										 # Also scope allows for chaining ex. 'User.admin.paginate'
+										 # applications > list recent articles, flagged comments
+
 	def has_password?(submitted_password)
 		encrypted_password == encrypt(submitted_password)
 	end
@@ -63,8 +69,10 @@ class User < ActiveRecord::Base
 			#self.microposts
 		#return all microposts that meet criteria
 			#Micropost.where("user_id = ?", self.id)
-			Micropost.where("user_id = ?", id)  #use of '?' as placeholder to prevent SQL injection
+			#Micropost.where("user_id = ?", id)  #use of '?' as placeholder to prevent SQL injection
 
+		#Lesson 74 @7:00, adj to include following posts
+			Micropost.from_users_followed_by(self)  #see Micropost.rb
 	end
 
 	#Lesson 72 @22:00
