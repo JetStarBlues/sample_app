@@ -63,7 +63,6 @@ li#signInBtn a
 { 
 	font-weight: bold;
 	color: rgb(3,149,197);
-	text-shadow: 0.5px 0.5px 0px #000;
 }
 
 
@@ -375,6 +374,7 @@ div.userInfoBox
 
 div#handle {width: 250px; color: #000;}
 div#handle a {color: #000;}
+div#handle a:hover {text-decoration: none;}
 div#infoBox_Gravatar
 {
 	display:inline-block;
@@ -400,6 +400,7 @@ div#infoBox_follow
 	margin-top: 13px;
 	border-top:1px solid;
 }
+div#infoBox_follow a:hover {text-decoration: none;}
 div#following
 {
 	border-right: 1px solid;
