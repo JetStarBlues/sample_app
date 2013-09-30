@@ -11,26 +11,52 @@ describe PagesController do
   #end
 
   describe "GET 'home'" do
-    it "returns http success" do
-      get 'home'
-      response.should be_success
+
+    describe "when not signed in" do
+      it "returns http success" do
+        get 'home'
+        response.should be_success
+      end
+
+      # Lesson 19 @2:00
+      it "should have the correct title" do
+        get 'home'
+        response.should have_selector("title",
+        :content => "RoR Sample App | Home")
+        #see lesson 26 @18:00
+        # :content => "#{@base_title} | Home")
+      end
+
+      # Lesson 19 @16:00
+      # Cause generic layout used for the 3 pages, testing once likely to catch all
+      it "should have a non-blank body" do
+        get 'home'
+        response.body.should_not =~ /<body>\s*<\/body>/
+      end
     end
 
-    # Lesson 19 @2:00
-    it "should have the correct title" do
-      get 'home'
-      response.should have_selector("title",
-      :content => "RoR Sample App | Home")
-      #see lesson 26 @18:00
-      # :content => "#{@base_title} | Home")
+    describe "when signed in" do
+      before(:each) do
+        @user = test_sign_in(Factory(:user))
+        other_user = Factory(:user, :email => Factory.next(:email))
+        other_user.follow!(@user)
+      end
+
+      it "should have right follower/following counts" do
+        get :home
+        # response.should have_selector('a', :href => following_user_path(@user),
+        #                                    :content => "0 following")
+        response.should have_selector('a', :href => following_user_path(@user))
+        response.should have_selector('span#numFollowing', :content => "0")
+        response.should have_selector('span#txtFollowing', :content => "following")
+        # response.should have_selector('a', :href => followers_user_path(@user),
+        #                                    :content => "1 follower")
+        response.should have_selector('a', :href => followers_user_path(@user))
+        response.should have_selector('span#numFollowers', :content => "1")
+        response.should have_selector('span#txtFollowers', :content => "follower")
+      end
     end
 
-    # Lesson 19 @16:00
-    # Cause generic layout used for the 3 pages, testing once likely to catch all
-    it "should have a non-blank body" do
-      get 'home'
-      response.body.should_not =~ /<body>\s*<\/body>/
-    end
   end
   
 

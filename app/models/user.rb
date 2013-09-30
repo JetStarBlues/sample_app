@@ -6,7 +6,16 @@ class User < ActiveRecord::Base
 	attr_accessible :name, :email, :password, :password_confirmation
 
 	#Lesson 66 - associations with other models
-	has_many :microposts, :dependent => :destroy  #when delete user, also delete assoc microposts
+	has_many :microposts,    		 :dependent   => :destroy  #when delete user, also delete assoc microposts
+	has_many :relationships, 		 :dependent   => :destroy,
+							 		 :foreign_key => "follower_id"
+	has_many :reverse_relationships, :dependent   => :destroy,
+									 :foreign_key => "followed_id",
+									 :class_name  => "Relationship"
+	has_many :following,     		 :through     => :relationships,
+							 		 :source      => :followed
+	has_many :followers, 	 		 :through     => :reverse_relationships,
+					     	 		 :source      => :follower
 
     #check if name & email present
     	#Lesson 36
@@ -24,6 +33,12 @@ class User < ActiveRecord::Base
 							 :length	   => { :within => 6..40 }
 
 		before_save :encrypt_password
+
+	#scope :admin, where(:admin => true)  #Lesson74 @16:00
+										 # Allows you to call 'User.admin' which returns 
+										 # an array of all admins.
+										 # Also scope allows for chaining ex. 'User.admin.paginate'
+										 # applications > list recent articles, flagged comments
 
 	def has_password?(submitted_password)
 		encrypted_password == encrypt(submitted_password)
@@ -54,9 +69,27 @@ class User < ActiveRecord::Base
 			#self.microposts
 		#return all microposts that meet criteria
 			#Micropost.where("user_id = ?", self.id)
-			Micropost.where("user_id = ?", id)  #use of '?' as placeholder to prevent SQL injection
+			#Micropost.where("user_id = ?", id)  #use of '?' as placeholder to prevent SQL injection
 
+		#Lesson 74 @7:00, adj to include following posts
+			Micropost.from_users_followed_by(self)  #see Micropost.rb
 	end
+
+	#Lesson 72 @22:00
+	def following?(followed)
+		#self.relationships.find_by_followed_id(followed)
+		relationships.find_by_followed_id(followed)		
+	end
+
+	def follow!(followed)
+		relationships.create!(:followed_id => followed.id)
+	end
+
+	def unfollow!(followed)
+		relationships.find_by_followed_id(followed).destroy
+	end
+
+	
 
 
 	#set as private since only used in User model

@@ -1,0 +1,11 @@
+$("follow_form").update("<%= escape_javascript(render('users/unfollow')) %>")
+//$("numFollowers").update('<%= "#{@user.followers.count}" %>')
+
+if ('<%= "#{@user.followers.count}" %>' == 1) {
+	$("numFollowers").update('<%= "#{@user.followers.count}" %>');
+	$("txtFollowers").update("follower"); 
+}
+else {
+	$("numFollowers").update('<%= "#{@user.followers.count}" %>');
+	$("txtFollowers").update("followers");
+}

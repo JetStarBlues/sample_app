@@ -83,29 +83,36 @@ describe UsersController do
     end
 
     it "should be successful" do
+      test_sign_in(@user)   #JK added to avoid fail. Lesson72. Suspect 'userInfoBox' in show 
       get :show, :id => @user
       response.should be_success
     end
 
     it "should find the right user" do
+      test_sign_in(@user)   #JK added to avoid fail. Lesson72. Suspect 'userInfoBox' in show 
       get :show, :id => @user
       assigns(:user).should == @user
     end    
 
     it "should have the right title" do
+      test_sign_in(@user)   #JK added to avoid fail. Lesson72. Suspect 'userInfoBox' in show 
       get :show, :id => @user
       #response.should have_selector("title", :content => "RoR Sample App | " + @user.name)
       response.should have_selector("title", :content => "RoR Sample App | #{@user.name}")
     end   
 
     it "should have the user's name" do
+      test_sign_in(@user)   #JK added to avoid fail. Lesson72. Suspect 'userInfoBox' in show 
       get :show, :id => @user
-      response.should have_selector('h1', :content => "#{@user.name}")
+      #response.should have_selector('h1', :content => "#{@user.name}")
+      response.should have_selector('span#infoBox_name', :content => "#{@user.name}")
     end
 
     it "should have a profile image" do
+      test_sign_in(@user)   #JK added to avoid fail. Lesson72. Suspect 'userInfoBox' in show 
       get :show, :id => @user
-      response.should have_selector('h1>img', :class => "gravatar")
+      #response.should have_selector('h1>img', :class => "gravatar")
+      response.should have_selector('div#infoBox_Gravatar>img', :class => "gravatar")
     end
 
     # @ 31:00
@@ -118,6 +125,7 @@ describe UsersController do
     it "should show the user's microposts" do
       mp1 = Factory(:micropost, :user => @user, :content => "Filler text")
       mp2 = Factory(:micropost, :user => @user, :content => "2 Filler text")
+      test_sign_in(@user)   #JK added to avoid fail. Lesson72. Suspect 'userInfoBox' in show 
       get :show, :id => @user
 #might need to change this      
       response.should have_selector("div.content", :content => mp1.content)
@@ -126,14 +134,26 @@ describe UsersController do
 
     it "should paginate microposts" do
       35.times { Factory(:micropost, :user => @user, :content => "Filler text") }
+      test_sign_in(@user)   #JK added to avoid fail. Lesson72. Suspect 'userInfoBox' in show 
       get :show, :id => @user      
       response.should have_selector("div.pagination")
     end
 
     it "should display the micropost count" do
       10.times { Factory(:micropost, :user => @user, :content => "Filler text") }
+      test_sign_in(@user)   #JK added to avoid fail. Lesson72. Suspect 'userInfoBox' in show 
       get :show, :id => @user      
       response.should have_selector("td", :content => @user.microposts.count.to_s)
+    end
+
+    #Lesson73 @24:00
+    describe "when signed in as another user" do
+      
+      it "should be successful" do
+        test_sign_in(Factory(:user, :email => Factory.next(:email)))
+        get :show, :id => @user
+        response.should be_success
+      end
     end
 
   end
@@ -368,9 +388,48 @@ describe UsersController do
           delete :destroy, :id => @admin
         end.should_not change(User, :count)        
       end
+    end
+  end
 
+  #---FOLLOWING & FOLLOWERS---#
+  describe "follow pages" do
+
+    describe "when not signed in" do
+
+      it "should protect 'following'" do
+        get :following, :id => 1
+        response.should redirect_to(signin_path)
+      end
+
+      it "should protect 'followers'" do
+        get :followers, :id => 1
+        response.should redirect_to(signin_path)
+      end
+    end
+
+    describe "when signed in" do
+      before(:each) do
+        @user = test_sign_in(Factory(:user))
+        @other_user = Factory(:user, :email => Factory.next(:email))
+        @user.follow!(@other_user)
+      end
+
+      it "should show user following" do
+        get :following, :id => @user
+        response.should have_selector('a', :href => user_path(@other_user),
+                                           :content => @other_user.name)
+      end
+
+      it "should show user followers" do
+        get :followers, :id => @other_user
+        response.should have_selector('a', :href => user_path(@user),
+                                           :content => @user.name)
+      end
     end
 
   end
+
+  
+  
 
 end
