@@ -1,6 +1,7 @@
 <div class = "micropost">
 	<% if request.path == root_path || request.path == home_path %><!-- if profile page, don't show gravatar-->
 		<div id="gravatarComment"> <%= link_to gravatar_for(micropost.user), micropost.user %> </div>
+		<div id="usernameComment"><%= link_to micropost.user.name, micropost.user %></div>
 	<% end %>
 	<div class="content"><%= micropost.content %></div>
 
