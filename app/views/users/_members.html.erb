@@ -3,9 +3,9 @@
 		<li>
 			<a href="<%= user_path(user) %>">
 			<span id="indexPic"><%= gravatar_for user, :size => 30 %></span></a>
-			<span id="indexName"><%= link_to user.name, user %></span>
-			<span>-->&nbsp;</span>
+			<span id="indexName"><%= link_to user.name, user %></span>			
 			<% if current_user.admin? %>
+			<span>-->&nbsp;</span>
 			<span><%= link_to "delete", user, :method => :delete,
 											  :confirm => "Are you sure?",
 											  :title => "Delete #{user.name}" %></span>
